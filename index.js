@@ -70,7 +70,7 @@ $(document).ready(function () {
       .parents(".menu-item")
       .clone(true)
       .appendTo($(this).parents(".menu-list"));
-    dragNdrop();
+    // dragNdrop();
     getScore();
   });
 
@@ -165,7 +165,7 @@ $(document).ready(function () {
 
     // delete task
     $(delete_btn).click(function () {
-      $(delete_btn)
+      $(this)
         .parents(".menu-item")
         .fadeOut(500, function () {
           $(this).remove();
@@ -175,10 +175,11 @@ $(document).ready(function () {
 
     // Copy item
     $(copy_btn).click(function () {
-      $(copy_btn)
+      $(this)
         .parents(".menu-item")
         .clone(true)
-        .appendTo($(copy_btn).parents(".menu-list"));
+        .appendTo($(this).parents(".menu-list"));
+      getScore();
     });
 
     if (input_val.trim() != 0) {
@@ -218,6 +219,7 @@ $(document).ready(function () {
     )
       .sortable({
         connectWith: ".menu-list",
+        animation: 150,
         update: function (event, ui) {
           getScore();
         },
