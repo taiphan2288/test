@@ -104,7 +104,7 @@
           <div class="row row-cols-md-5 d-flex justify-content-around">
             <div class="col">
               <p class="task-heading-started">
-                Not started (<span id1="items" data-id="id-item">0</span>)
+                Not started (<span id="status_started_sore">0</span>)
               </p>
               <ul
                 class="menu-list d-flex flex-column droppable-area1"
@@ -121,6 +121,9 @@
                     <button class="btn-delete">
                       <i class="bx bxs-trash-alt delete-icon"></i>
                     </button>
+                    <button class="btn-copy">
+                      <i class="bx bxs-copy-alt copy-icon"></i>
+                    </button>
                   </div>
                 </li>
                 <li
@@ -134,13 +137,16 @@
                     <button class="btn-delete">
                       <i class="bx bxs-trash-alt delete-icon"></i>
                     </button>
+                    <button class="btn-copy">
+                      <i class="bx bxs-copy-alt copy-icon"></i>
+                    </button>
                   </div>
                 </li>
               </ul>
             </div>
             <div class="col">
               <p class="task-heading-progressed">
-                In progress(<span id2="items" data-id="id-item">0</span>)
+                In progress (<span id="status_progress_sore">0</span>)
               </p>
               <ul
                 class="menu-list d-flex flex-column droppable-area2"
@@ -157,13 +163,16 @@
                     <button class="btn-delete">
                       <i class="bx bxs-trash-alt delete-icon"></i>
                     </button>
+                    <button class="btn-copy">
+                      <i class="bx bxs-copy-alt copy-icon"></i>
+                    </button>
                   </div>
                 </li>
               </ul>
             </div>
             <div class="col">
               <p class="task-heading-completed">
-                Completed(<span id3="items" data-id="id-item">0</span>)
+                Completed (<span id="status_completed_sore">0</span>)
               </p>
               <ul
                 class="menu-list d-flex flex-column droppable-area3"
@@ -180,13 +189,16 @@
                     <button class="btn-delete">
                       <i class="bx bxs-trash-alt delete-icon"></i>
                     </button>
+                    <button class="btn-copy">
+                      <i class="bx bxs-copy-alt copy-icon"></i>
+                    </button>
                   </div>
                 </li>
               </ul>
             </div>
             <div class="col">
               <p class="task-heading-schedule">
-                Behind schedule(<span id4="items" data-id="id-item">0</span>)
+                Behind schedule (<span id="status_schedule_score">0</span>)
               </p>
               <ul
                 class="menu-list d-flex flex-column droppable-area4"
@@ -195,7 +207,7 @@
             </div>
             <div class="col">
               <p class="task-heading-pending">
-                Pending(<span id5="items" data-id="id-item">0</span>)
+                Pending (<span id="status_pending_score">0</span>)
               </p>
               <ul
                 class="menu-list d-flex flex-column droppable-area5"

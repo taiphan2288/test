@@ -14,6 +14,10 @@ $(document).ready(function () {
     }
   });
 
+  //Run function to drag and drop item
+  getScore();
+  dragNdrop();
+
   let draggedItem = null;
 
   function dragNdrop() {
@@ -30,9 +34,8 @@ $(document).ready(function () {
         $(this).css("opacity", 1);
       });
 
-      for (let i = 0; i < $(".menu-list").length; i++) {
-        const list = $(".menu-list")[i];
-
+      for (let j = 0; j < $(".menu-list").length; j++) {
+        const list = $(".menu-list")[j];
         list.addEventListener("dragover", (e) => e.preventDefault());
 
         list.addEventListener("dragenter", function (e) {
@@ -43,23 +46,30 @@ $(document).ready(function () {
 
         list.addEventListener("drop", function (e) {
           this.append(draggedItem);
+          getScore();
         });
       }
     }
   }
 
-  //Run function to drag and drop item
-  dragNdrop();
-
   // Delete item
-  $(".btn-delete").each(function () {
-    $(this).click(function () {
-      $(this)
-        .parents(".menu-item")
-        .fadeOut(500, function () {
-          $(this).remove();
-        });
-    });
+  $(".btn-delete").click(function () {
+    $(this)
+      .parents(".menu-item")
+      .fadeOut(400, function () {
+        $(this).remove();
+        getScore();
+      });
+  });
+
+  // Copy item
+  $(".btn-copy").click(function () {
+    $(this)
+      .parents(".menu-item")
+      .clone(true)
+      .appendTo($(this).parents(".menu-list"));
+    dragNdrop();
+    getScore();
   });
 
   // Modal
@@ -69,7 +79,6 @@ $(document).ready(function () {
 
   btns.forEach((btn) => {
     btn.addEventListener("click", function (e) {
-      // console.log(btn.dataset);
       document
         .querySelector(btn.dataset.targetModal)
         .classList.add("active-modal");
@@ -96,6 +105,7 @@ $(document).ready(function () {
   // Create todo task
   $(document).on("click", "#todo_submit", function () {
     createTodo();
+    getScore();
   });
 
   function createTodo() {
@@ -131,6 +141,15 @@ $(document).ready(function () {
 
     $(div_info).append(delete_btn);
 
+    // create delete button
+    const copy_btn = document.createElement("button");
+    const copy_icon = `<i class="bx bxs-copy-alt copy-icon"></i>`;
+
+    $(copy_btn).addClass("btn-copy");
+    $(copy_btn).append(copy_icon);
+
+    $(div_info).append(copy_btn);
+
     // add event drag/drop
     todo_li.addEventListener("dragstart", function () {
       draggedItem = this;
@@ -148,7 +167,16 @@ $(document).ready(function () {
         .parents(".menu-item")
         .fadeOut(500, function () {
           $(this).remove();
+          getScore();
         });
+    });
+
+    // Copy item
+    $(copy_btn).click(function () {
+      $(copy_btn)
+        .parents(".menu-item")
+        .clone(true)
+        .appendTo($(copy_btn).parents(".menu-list"));
     });
 
     if (input_val.trim() != 0) {
@@ -171,4 +199,21 @@ $(document).ready(function () {
   const resetForm = () => {
     $("#todo_input").val("");
   };
+  function getScore() {
+    $("#status_started_sore").html($("#status_started li").length);
+    $("#status_progress_sore").html($("#status_progress li").length);
+    $("#status_completed_sore").html($("#status_completed li").length);
+    $("#status_schedule_score").html($("#status_schedule li").length);
+    $("#status_pending_score").html($("#status_pending li").length);
+  }
+
+  $(function () {
+    $(
+      "#status_started, #status_progress, #status_completed, #status_schedule, #status_pending "
+    )
+      .sortable({
+        connectWith: ".menu-list",
+      })
+      .disableSelection();
+  });
 });

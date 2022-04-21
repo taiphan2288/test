@@ -261,14 +261,16 @@ html {
   padding: 5px;
 }
 
-.btn-delete {
+.btn-delete,
+.btn-copy {
   margin: 5px;
   border: none;
-  padding: 10px;
+  padding: 5px;
   background-color: #fff;
 }
 
-.delete-icon {
+.delete-icon,
+.copy-icon {
   color: rgb(148, 146, 146);
   font-size: 20px;
 }
