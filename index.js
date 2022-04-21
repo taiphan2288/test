@@ -45,6 +45,8 @@ $(document).ready(function () {
         list.addEventListener("dragleave", function (e) {});
 
         list.addEventListener("drop", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
           this.append(draggedItem);
           getScore();
         });
@@ -199,6 +201,8 @@ $(document).ready(function () {
   const resetForm = () => {
     $("#todo_input").val("");
   };
+
+  // check quantity of task in list
   function getScore() {
     $("#status_started_sore").html($("#status_started li").length);
     $("#status_progress_sore").html($("#status_progress li").length);
@@ -207,12 +211,16 @@ $(document).ready(function () {
     $("#status_pending_score").html($("#status_pending li").length);
   }
 
+  // Sortable item in list
   $(function () {
     $(
       "#status_started, #status_progress, #status_completed, #status_schedule, #status_pending "
     )
       .sortable({
         connectWith: ".menu-list",
+        update: function (event, ui) {
+          getScore();
+        },
       })
       .disableSelection();
   });
