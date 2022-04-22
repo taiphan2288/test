@@ -42,7 +42,9 @@ $(document).ready(function () {
           e.preventDefault();
         });
 
-        list.addEventListener("dragleave", function (e) {});
+        list.addEventListener("dragleave", function (e) {
+          e.preventDefault();
+        });
 
         list.addEventListener("drop", function (e) {
           e.preventDefault();
