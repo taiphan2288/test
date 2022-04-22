@@ -201,6 +201,7 @@ $(document).ready(function () {
   // reset form
   const resetForm = () => {
     $("#todo_input").val("");
+    $("#task_option").prop("selectedIndex", 0);
   };
 
   // check quantity of task in list
@@ -219,7 +220,6 @@ $(document).ready(function () {
     )
       .sortable({
         connectWith: ".menu-list",
-        animation: 150,
         update: function (event, ui) {
           getScore();
         },
