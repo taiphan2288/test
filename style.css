@@ -164,6 +164,7 @@ html {
   margin: 0 10px;
   gap: 10px;
   text-transform: capitalize;
+  border: none !important;
 }
 
 .add-icon {
@@ -423,4 +424,10 @@ html {
     opacity: 0;
     transition: translateX(0);
   }
+}
+
+.highlight {
+  border: 1px dashed;
+  background-color: #ccc;
+  border-radius: 5px;
 }

@@ -70,7 +70,7 @@ $(document).ready(function () {
       .parents(".menu-item")
       .clone(true)
       .appendTo($(this).parents(".menu-list"));
-    // dragNdrop();
+    dragNdrop();
     getScore();
   });
 
@@ -180,6 +180,7 @@ $(document).ready(function () {
         .clone(true)
         .appendTo($(this).parents(".menu-list"));
       getScore();
+      dragNdrop();
     });
 
     if (input_val.trim() != 0) {
@@ -191,7 +192,7 @@ $(document).ready(function () {
       $("#" + status_check).append(todo_li);
 
       // add animation to add item
-      $(todo_li).css("animation", "show 0.5s linear");
+      // $(todo_li).css("animation", "show 0.5s linear");
 
       // reset value input
       resetForm();
@@ -223,6 +224,7 @@ $(document).ready(function () {
         update: function (event, ui) {
           getScore();
         },
+        revert: 250,
       })
       .disableSelection();
   });
