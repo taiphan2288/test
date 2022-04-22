@@ -118,10 +118,14 @@ html {
 
 .text-muted {
   color: #a1a5b7 !important;
+  font-size: 14px !important;
+  font-weight: 500;
 }
 
 .text-dark {
   color: #181c32 !important;
+  font-size: 14px !important;
+  font-weight: 500;
 }
 
 .breadcrumb-item a {
